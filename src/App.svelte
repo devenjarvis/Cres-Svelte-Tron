@@ -1,37 +1,23 @@
 <script>
-	//import a library like CH5 CrComLib
-	import CrComLib from '@crestron/ch5-crcomlib/build_bundles/cjs/cr-com-lib.js'
-
-	//eruda creates a mimic of Chrome Dev Tools on mobile/touch panels, this is automatically 
-	//removed if you use 'npm run ch5-build' or 'node ch5-run --host XXX.XXX.XXX.XXX --dev'
-	import * as eruda from 'eruda';
-	eruda.init();
+	// Eruda creates a mimic of Chrome Dev Tools on mobile/touch panels, this is automatically 
+	// Removed if you use 'npm run ch5-build' or 'node ch5-run --host XXX.XXX.XXX.XXX --dev'
+	// Commented out for now to simplify
+	//import * as eruda from 'eruda';
+	//eruda.init();
 
 	//import a svelte compontent from another file
-	import Attributes from './Attributes.svelte';
+	import Button from './components/Button.svelte'
+	import Attributes from './components/Attributes.svelte';
 
-	//this variable is accessible to the JS and HTML inside this file, don't worry about the odd
-	//use of 'let', it is how Svelte handles variables for compiling
+	//this variable is accessible to the JS and HTML inside this file
 	let popup = false;
 
 </script>
-
-<Attributes bind:value={popup}></Attributes>
-<div id="main">
-	<img src="images/ch5-logo.svg">
-	<img src="images/plus.svg" class="math">
-	<img src="images/svelte-logo.svg">
-	<img src="images/equal.svg" class="math">
-	<img src="images/heart.svg">
-</div>
-
-<div id="footer">
-	<button on:click={()=>popup=!popup}><img src="images/gear.svg"></button>
-</div>
 <style>
 	:root {
 		--color-main: #fffcf8;
 		--color-contrast: #2b2522;
+		--color-primary: #187795;
 	}
 
 	:global(body) {
@@ -96,3 +82,18 @@
 		}
 	}
 </style>
+
+<Attributes bind:value={popup}></Attributes>
+<div id="main">
+	<img src="images/ch5-logo.svg">
+	<img src="images/plus.svg" class="math">
+	<img src="images/svelte-logo.svg">
+	<img src="images/equal.svg" class="math">
+	<img src="images/heart.svg">
+</div>
+
+<Button color="primary">Test</Button>
+
+<div id="footer">
+	<button on:click={()=>popup=!popup}><img src="images/gear.svg"></button>
+</div>
