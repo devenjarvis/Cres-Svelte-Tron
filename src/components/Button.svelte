@@ -9,8 +9,9 @@
         padding: 0.5rem;
         border: none;
         border-radius: 5px;
-        font-family: var(--sans-serif);
         font-weight: 800;
+        font-size: 16px;
+        width: 100%;
     }
 
     /* Add classes for each color */
@@ -50,6 +51,6 @@
     }
 </style>
 
-<button class={color} on:click={click}>
+<button class="{color}" on:click={click}>
     <slot></slot>
 </button>
