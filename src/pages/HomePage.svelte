@@ -1,6 +1,4 @@
 <script>
-    // Import a router `store` to facilitate changing pages
-    import { path } from '../router/router.js'
 </script>
 
 <style>

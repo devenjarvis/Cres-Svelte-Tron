@@ -5,7 +5,7 @@
 	
 	// This syntax is for declaring reactive variables. 
 	// That means when you update the value for this variable any reference to it will also update
-	// In this case we're justp rinting it to the screen to demonstrate
+	// In this case we're just printing it to the screen to demonstrate
 	$: last_pressed = "None";
 
 	function sendEvent(signalType, signalName, value, name) {
@@ -16,10 +16,11 @@
 </script>
 
 <style>
+	/* NOTE: Styles are scoped only to this page/component unless you specifify global()*/
 	.grid {
 		display: grid;
-		  grid-template-columns: 1fr 1fr 1fr 1fr;
-		  grid-gap: 1rem;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-gap: 1rem;
 	}
 </style>
 
@@ -29,12 +30,12 @@
 
 <div class="grid">
 	<!-- I'll admit the syntax for the click function is a bit unwieldy. This is only necessary because out function takes arguments. -->
-	<Button color="primary" click={() => {sendEvent('b','ex1_b',true, 'Primary')}}>Primary Button</Button>
-	<Button color="secondary" click={() => {sendEvent('b','ex1_b',true, 'Secondary')}}>Secondary Button</Button>
-	<Button color="light" click={() => {sendEvent('b','ex1_b',true, 'Light')}}>Light Button</Button>
-	<Button color="dark" click={() => {sendEvent('b','ex1_b',true, 'Dark')}}>Dark Button</Button>
-	<Button color="success" click={() => {sendEvent('b','ex1_b',true, 'Success')}}>Success Button</Button>
-	<Button color="warning" click={() => {sendEvent('b','ex1_b',true, 'Warning')}}>Warning Button</Button>
-	<Button color="error" click={() => {sendEvent('b','ex1_b',true, 'Error')}}>Error Button</Button>
-	<Button color="whatever" click={() => {sendEvent('b','ex1_b',true, 'Whatever')}}>Whatever Button</Button>
+	<Button color="primary" click={() => {sendEvent('b', 'ex1_b', true, 'Primary')}}>Primary Button</Button>
+	<Button color="secondary" click={() => {sendEvent('b', 'ex1_b', true, 'Secondary')}}>Secondary Button</Button>
+	<Button color="light" click={() => {sendEvent('b', 'ex1_b',true, 'Light')}}>Light Button</Button>
+	<Button color="dark" click={() => {sendEvent('b', 'ex1_b',true, 'Dark')}}>Dark Button</Button>
+	<Button color="success" click={() => {sendEvent('b', 'ex1_b',true, 'Success')}}>Success Button</Button>
+	<Button color="warning" click={() => {sendEvent('b', 'ex1_b',true, 'Warning')}}>Warning Button</Button>
+	<Button color="error" click={() => {sendEvent('b', 'ex1_b',true, 'Error')}}>Error Button</Button>
+	<Button color="whatever" click={() => {sendEvent('b', 'ex1_b',true, 'Whatever')}}>Whatever Button</Button>
 </div>

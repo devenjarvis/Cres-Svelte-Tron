@@ -18,5 +18,6 @@
 
 <nav>
     <Button color="primary" click={() => path.navigate('/')}>Home</Button>
-    <Button color="secondar" click={() => path.navigate('/buttons')}>Buttons</Button>
+    <Button color="secondary" click={() => path.navigate('/buttons')}>Buttons</Button>
+    <Button color="secondary" click={() => path.navigate('/about')}>About</Button>
 </nav>
