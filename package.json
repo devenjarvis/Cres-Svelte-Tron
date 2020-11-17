@@ -24,7 +24,9 @@
   "dependencies": {
     "@crestron/ch5-crcomlib": "latest-qe",
     "degit": "^2.8.0",
-    "sirv-cli": "^0.4.6"
+    "sirv-cli": "^0.4.6",
+    "svelte-routing": "^1.4.2",
+    "svelte-spa-router": "^3.0.5"
   },
   "scripts": {
     "build": "rollup -c",
@@ -32,8 +34,8 @@
     "dev": "run-p start:dev autobuild",
     "start": "sirv public --single --host 0.0.0.0",
     "start:dev": "sirv public --single --dev",
-    "ch5-runDev": "node ch5-run --host XXX.XXX.XXX.XXX --dev",
-    "ch5-build": "node ch5-run --host XXX.XXX.XXX.XXX",
+    "ch5-runDev": "node ch5-run --host 192.168.1.145 --dev",
+    "ch5-build": "node ch5-run --host 192.168.1.145",
     "ch5-dev": "run-p start:dev ch5-runDev"
   }
 }

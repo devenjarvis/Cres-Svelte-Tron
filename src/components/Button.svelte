@@ -6,17 +6,20 @@
 
 <style>
     button {
-        padding: 0.5rem;
-        border: none;
+        padding: 1rem;
+        border: solid red 1px;
         border-radius: 5px;
         font-weight: 800;
         font-size: 16px;
-        width: 100%;
+        width: 150px;
+        height: 80px;
     }
+
+    
 
     /* Add classes for each color */
     .primary {
-        color: var(--color-dark);
+        color: var(--color-light);
         background-color: var(--color-primary);
     }
 
