@@ -23,6 +23,16 @@
         background-color: var(--color-primary);
     }
 
+    .primary:active{
+        color: var(--color-dark);
+        background-color: var(--color-secondary);
+    }
+
+    .primary:after{
+        color: var(--color-dark);
+        background-color: var(--color-secondary);
+    }
+
 	.secondary {
         color: var(--color-dark);
         background-color: var(--color-secondary);

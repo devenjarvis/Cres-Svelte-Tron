@@ -22,6 +22,23 @@
 	onDestroy (() => {
 		CrComLib.unsubscribeState('s', 'sig_1', sig1SubId);
 	})
+
+	// ADDED BY ME
+	var serial12Fb;
+
+	$: currentTime = "0";
+
+	onMount (() => {
+        serial12Fb = CrComLib.subscribeState('s','12', function (value) {
+            currentTime = value;
+        });
+    })
+
+    // Unsubscribe from anything you subscribed to when this page is destroyed
+    onDestroy (() => {
+        CrComLib.unsubscribeState('s', '12', serial12Fb);
+    })
+
 </script>
 
 <style>
@@ -42,13 +59,13 @@
 
 <div class="grid">
 	<!-- I'll admit the syntax for the click function is a bit unwieldy. This is only necessary because out function takes arguments. -->
-	<Button color="primary" click={() => {CrComLib.publishEvent('s','sig_1','Primary')}}>Primary Button</Button>
-	<Button color="secondary" click={() => {CrComLib.publishEvent('s','sig_1','Secondary')}}>Secondary Button</Button>
-	<Button color="light" click={() => {CrComLib.publishEvent('s','sig_1','Light')}}>Light Button</Button>
-	<Button color="dark" click={() => {CrComLib.publishEvent('s','sig_1','Dark')}}>Dark Button</Button>
-	<Button color="success" click={() => {CrComLib.publishEvent('s','sig_1','Success')}}>Success Button</Button>
-	<Button color="warning" click={() => {CrComLib.publishEvent('s','sig_1','Warning')}}>Warning Button</Button>
-	<Button color="error" click={() => {CrComLib.publishEvent('s','sig_1','Error')}}>Error Button</Button>
-	<Button color="whatever" click={() => {CrComLib.publishEvent('s','sig_1','Whatever')}}>Whatever Button</Button>
-	<Button color="whatever" click={() => {CrComLib.publishEvent('s','sig_1','Whatever')}}>Whatever Button</Button>
+	<Button color="primary" click={() => {CrComLib.publishEvent('b','1',true)}}>Primary Button</Button>
+	<Button color="secondary" click={() => {CrComLib.publishEvent('n','2',50)}}>Secondary Button</Button>
+	<Button color="light" click={() => {CrComLib.publishEvent('s','3','Test3*')}}>Light Button</Button>
+	<Button color="dark" click={() => {CrComLib.publishEvent('s','4','Test4')}}>Dark Button</Button>
+	<Button color="success" click={() => {CrComLib.publishEvent('s','5','Test5')}}>Success Button</Button>
+	<Button color="warning" click={() => {CrComLib.publishEvent('s','6','Test6')}}>Warning Button</Button>
+	<Button color="error" click={() => {CrComLib.publishEvent('s','7','Test7')}}>Error Button</Button>
+	<Button color="whatever" click={() => {CrComLib.publishEvent('s','8','Test8')}}>Whatever Button</Button>
+	<Button color="whatever" click={() => {CrComLib.publishEvent('s','9','Test9')}}>Whatever Button</Button>
 </div>

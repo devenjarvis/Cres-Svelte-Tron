@@ -7,8 +7,9 @@
   import { onMount } from 'svelte';
   
   // STUFF ADDED BY ME
-  function sendNumberEvent(signalName, value) {
-    CrComLib.publishEvent('n', signalName, value);
+  function sendEvent(signalType, joinNumber, value) {
+    CrComLib.publishEvent(signalType, joinNumber, value);
+  setTimeout (() => CrComLib.publishEvent(signalType, joinNumber, false), 200);
 	}
 
 </script>
@@ -40,9 +41,9 @@
   </div>
   
 <div class="volume">
-  <Button color="primary" click={() => {sendNumberEvent('sig_1', 1)}}>Mute</Button>
-  <Button color="primary" click={() => {sendNumberEvent('sig_1', 2)}}>Down</Button>   
-  <Button color="primary" click={() => {sendNumberEvent('sig_1', 3)}}>Up</Button>
+  <Button color="primary" click={() => {sendEvent('b','1',true)}}>Mute</Button>
+  <Button color="primary" click={() => {sendEvent('b','1',true)}}>Down</Button>   
+  <Button color="primary" click={() => {sendEvent('b','1',true)}}>Up</Button>
 </div>
 
 
