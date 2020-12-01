@@ -4,24 +4,8 @@
 	import { onMount, onDestroy } from 'svelte';
 	import Button from '../components/Button.svelte'
 
-	// Initialize Subscription Ids
-	var sig1SubId;
-
-	// Reactive variables - Use $: instead of var when you want the UI to change with the var does
-	$: last_pressed = null;
-
-	/*** Lifecycle Hooks ***/
-	// Subscribe to signals you want to listen to when this page is mounted
-	onMount (() => {
-		sig1SubId = CrComLib.subscribeState('s','sig_1', function (value) {
-			last_pressed = value;
-		});
-	})
-
-	// Unsubscribe from anything you subscribed to when this page is destroyed
-	onDestroy (() => {
-		CrComLib.unsubscribeState('s', 'sig_1', sig1SubId);
-	})
+	//Testing store
+	import { join_1 } from '../joinStore.js';
 
 	// ADDED BY ME
 	var serial12Fb;
@@ -54,18 +38,18 @@
 </style>
 
 <!-- Svelte has simple syntax for referencing a JS variable from the HTML -->
-<h1>Last Button Pressed was: {last_pressed}</h1>
+<h1>Last Button Pressed was: {$join_1}</h1>
 
 
 <div class="grid">
 	<!-- I'll admit the syntax for the click function is a bit unwieldy. This is only necessary because out function takes arguments. -->
-	<Button color="primary" click={() => {CrComLib.publishEvent('b','1',true)}}>Primary Button</Button>
-	<Button color="secondary" click={() => {CrComLib.publishEvent('n','2',50)}}>Secondary Button</Button>
-	<Button color="light" click={() => {CrComLib.publishEvent('s','3','Test3*')}}>Light Button</Button>
-	<Button color="dark" click={() => {CrComLib.publishEvent('s','4','Test4')}}>Dark Button</Button>
-	<Button color="success" click={() => {CrComLib.publishEvent('s','5','Test5')}}>Success Button</Button>
-	<Button color="warning" click={() => {CrComLib.publishEvent('s','6','Test6')}}>Warning Button</Button>
-	<Button color="error" click={() => {CrComLib.publishEvent('s','7','Test7')}}>Error Button</Button>
-	<Button color="whatever" click={() => {CrComLib.publishEvent('s','8','Test8')}}>Whatever Button</Button>
-	<Button color="whatever" click={() => {CrComLib.publishEvent('s','9','Test9')}}>Whatever Button</Button>
+	<Button color="primary" click={() => {join_1.publish('Primary')}}>Primary Button</Button>
+	<Button color="secondary" click={() => {join_1.publish('Secondary')}}>Secondary Button</Button>
+	<Button color="light" click={() => {join_1.publish('Light')}}>Light Button</Button>
+	<Button color="dark" click={() => {join_1.publish('Dark')}}>Dark Button</Button>
+	<Button color="success" click={() => {join_1.publish('Success')}}>Success Button</Button>
+	<Button color="warning" click={() => {join_1.publish('Warning')}}>Warning Button</Button>
+	<Button color="error" click={() => {join_1.publish('Error')}}>Error Button</Button>
+	<Button color="whatever" click={() => {join_1.publish('Whatever 1')}}>Whatever Button</Button>
+	<Button color="whatever" click={() => {join_1.publish('Whatever 2')}}>Whatever Button</Button>
 </div>
