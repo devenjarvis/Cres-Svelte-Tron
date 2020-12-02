@@ -1,28 +1,7 @@
 <script>
-    /*** Imports ***/
-	import CrComLib from '@crestron/ch5-crcomlib/build_bundles/cjs/cr-com-lib.js';
-	import { onMount, onDestroy } from 'svelte';
+	/*** Imports ***/
+	import { digitalJoin3 } from '../joinStore.js';
 	import Button from '../components/Button.svelte'
-
-	//Testing store
-	import { join_1 } from '../joinStore.js';
-
-	// ADDED BY ME
-	var serial12Fb;
-
-	$: currentTime = "0";
-
-	onMount (() => {
-        serial12Fb = CrComLib.subscribeState('s','12', function (value) {
-            currentTime = value;
-        });
-    })
-
-    // Unsubscribe from anything you subscribed to when this page is destroyed
-    onDestroy (() => {
-        CrComLib.unsubscribeState('s', '12', serial12Fb);
-    })
-
 </script>
 
 <style>
@@ -38,18 +17,14 @@
 </style>
 
 <!-- Svelte has simple syntax for referencing a JS variable from the HTML -->
-<h1>Last Button Pressed was: {$join_1}</h1>
+<h1>Join 3 State: {$digitalJoin3}</h1>
 
 
 <div class="grid">
 	<!-- I'll admit the syntax for the click function is a bit unwieldy. This is only necessary because out function takes arguments. -->
-	<Button color="primary" click={() => {join_1.publish('Primary')}}>Primary Button</Button>
-	<Button color="secondary" click={() => {join_1.publish('Secondary')}}>Secondary Button</Button>
-	<Button color="light" click={() => {join_1.publish('Light')}}>Light Button</Button>
-	<Button color="dark" click={() => {join_1.publish('Dark')}}>Dark Button</Button>
-	<Button color="success" click={() => {join_1.publish('Success')}}>Success Button</Button>
-	<Button color="warning" click={() => {join_1.publish('Warning')}}>Warning Button</Button>
-	<Button color="error" click={() => {join_1.publish('Error')}}>Error Button</Button>
-	<Button color="whatever" click={() => {join_1.publish('Whatever 1')}}>Whatever Button</Button>
-	<Button color="whatever" click={() => {join_1.publish('Whatever 2')}}>Whatever Button</Button>
+	<Button color="primary" type="momentary" join={digitalJoin3}>Momentary</Button>
+	<Button color="whatever" type="toggle" join={digitalJoin3}>Toggle</Button>
+	<Button color="success" type="lock-high" join={digitalJoin3}>Lock High</Button>
+	<Button color="error" type="lock-low" join={digitalJoin3}>Lock Low</Button>
+
 </div>

@@ -1,16 +1,9 @@
 <script>
   // Added by Deven to help get buttons working
-  import CrComLib from '@crestron/ch5-crcomlib/build_bundles/cjs/cr-com-lib.js';
+  import { digitalJoin4, digitalJoin5, digitalJoin6 } from '../joinStore.js';
 
-  import Router , { push } from 'svelte-spa-router';
+  import { push } from 'svelte-spa-router';
   import Button from "./Button.svelte";
-  import { onMount } from 'svelte';
-  
-  // STUFF ADDED BY ME
-  function sendEvent(signalType, joinNumber, value) {
-    CrComLib.publishEvent(signalType, joinNumber, value);
-  setTimeout (() => CrComLib.publishEvent(signalType, joinNumber, false), 200);
-	}
 
 </script>
 
@@ -41,9 +34,9 @@
   </div>
   
 <div class="volume">
-  <Button color="primary" click={() => {sendEvent('b','1',true)}}>Mute</Button>
-  <Button color="primary" click={() => {sendEvent('b','1',true)}}>Down</Button>   
-  <Button color="primary" click={() => {sendEvent('b','1',true)}}>Up</Button>
+  <Button color="primary" click={() => {digitalJoin4.publish(true)}}>Mute</Button>
+  <Button color="primary" click={() => {digitalJoin5.publish(true)}}>Down</Button>   
+  <Button color="primary" click={() => {digitalJoin6.publish(true)}}>Up</Button>
 </div>
 
 
