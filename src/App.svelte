@@ -9,9 +9,10 @@
   window.bridgeReceiveObjectFromNative = CrComLib.bridgeReceiveObjectFromNative;
 
 	// Import the Router compontent from another file
-  import Router , { push } from 'svelte-spa-router';
+  import Router , { location } from 'svelte-spa-router';
 
- 	// Import your app pages from other svelte files
+   // Import your app pages from other svelte files
+  import SpashPage from './pages/SplashPage.svelte';
 	import HomePage from './pages/HomePage.svelte';
 	import ButtonPage from './pages/ButtonPage.svelte';
 	import SliderPage from './pages/SliderPage.svelte';
@@ -24,7 +25,8 @@
   // Define your page "routes" - basically the screens you want to show
   
   const routes = {
-		"/": HomePage,
+    "/": SpashPage,
+    "/home": HomePage,
 		"/buttons": ButtonPage,
 		"/slider": SliderPage,
 		"/newpage": NewPage,
@@ -65,11 +67,14 @@
 </style>
 
 <!-- This is our global top bar -->
-<TopBar />
-
+{#if $location != '/'}
+  <TopBar />
+{/if}
 
 <!--This component just handles page routing, nothing more-->
 <Router {routes} />
 
 <!-- This is our global naviagtion bar -->
-<Nav/>
+{#if $location != '/'}
+  <Nav/>
+{/if}

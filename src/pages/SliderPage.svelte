@@ -1,7 +1,7 @@
 <script>
     /*** Imports ***/
     import Button from '../components/Button.svelte'
-    import { analogJoin2 } from '../joinStore.js';
+    import { analogJoin2 } from '../stores/joinStore.js';
 </script>
 
 <style>

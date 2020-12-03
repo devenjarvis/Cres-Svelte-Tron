@@ -1,6 +1,6 @@
 <script>
   // Added by Deven to help get buttons working
-  import { digitalJoin4, digitalJoin5, digitalJoin6 } from '../joinStore.js';
+  import { digitalJoin4, digitalJoin5, digitalJoin6 } from '../stores/joinStore.js';
 
   import { push } from 'svelte-spa-router';
   import Button from "./Button.svelte";
@@ -27,16 +27,16 @@
 
 <nav>
   <div class="function">
-    <Button color="primary" click={() => push('/')}>Home</Button>
+    <Button color="primary" click={() => push('/home')}>Home</Button>
     <Button color="primary" click={() => push('/buttons')}>Buttons</Button>
     <Button color="primary" click={() => push('/slider')}>Slider</Button>
     <Button color="primary" click={() => push('/newpage')}>New Page</Button>
   </div>
   
 <div class="volume">
-  <Button color="primary" click={() => {digitalJoin4.publish(true)}}>Mute</Button>
-  <Button color="primary" click={() => {digitalJoin5.publish(true)}}>Down</Button>   
-  <Button color="primary" click={() => {digitalJoin6.publish(true)}}>Up</Button>
+  <Button color="primary" join={digitalJoin4}>Mute</Button>
+  <Button color="primary" join={digitalJoin5}>Down</Button>   
+  <Button color="primary" join={digitalJoin6}>Up</Button>
 </div>
 
 

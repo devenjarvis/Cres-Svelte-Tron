@@ -1,15 +1,6 @@
 <script>
-  import CrComLib from '@crestron/ch5-crcomlib/build_bundles/cjs/cr-com-lib.js';
-  import { serialJoin1, analogJoin2, digitalJoin3 } from '../joinStore.js';
+  import { serialJoin1, analogJoin2, digitalJoin3, digitalJoin4, digitalJoin5 } from '../stores/joinStore.js';
   import Button from '../components/Button.svelte'
-
-
-function sendEvent(signalType, joinNumber, value) {
-  
-  // Docs: https://sdkcon78221.crestron.com/downloads/ShowcaseApp/utility-functions/utility-publish-signal.html
-  CrComLib.publishEvent(signalType, joinNumber, value);
-  setTimeout (() => CrComLib.publishEvent(signalType, joinNumber, false), 200);
-}
 </script>
 
 <style>
@@ -30,14 +21,16 @@ function sendEvent(signalType, joinNumber, value) {
 
 <div id="container">
 
-  <h1>Digital 1 Selected: {$digitalJoin3}</h1>
+  <h3>Digital 3 Selected: {$digitalJoin3}</h3>
+  <h3>Digital 4 Selected: {$digitalJoin4}</h3>
+  <h3>Digital 5 Selected: {$digitalJoin5}</h3>
   
   
   <div class="grid">
     <!-- I'll admit the syntax for the click function is a bit unwieldy. This is only necessary because out function takes arguments. -->
-    <Button color="primary" join={digitalJoin3}>Digital 1</Button>
-    <Button color="primary" join={digitalJoin3}>Digital 2</Button>
     <Button color="primary" join={digitalJoin3}>Digital 3</Button>
+    <Button color="primary" join={digitalJoin4}>Digital 4</Button>
+    <Button color="primary" join={digitalJoin5}>Digital 5</Button>
 
     <Button color="primary" type="analog" join={analogJoin2} value={65535}>Analog 1</Button>
     <Button color="primary" type="analog" join={analogJoin2} value={32650}>Analog 2</Button>

@@ -1,6 +1,6 @@
 <script>
 	/*** Imports ***/
-	import { digitalJoin3 } from '../joinStore.js';
+	import { digitalJoin3 } from '../stores/joinStore.js';
 	import Button from '../components/Button.svelte'
 </script>
 

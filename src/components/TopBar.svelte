@@ -1,5 +1,5 @@
 <script>
-	import { currentDate, currentTime, currentPage } from '../joinStore.js';
+	import { currentDate, currentTime, currentPage } from '../stores/joinStore.js';
 </script>
 
 <style>
