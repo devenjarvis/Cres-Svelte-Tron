@@ -39,13 +39,13 @@ function sendEvent(signalType, joinNumber, value) {
     <Button color="primary" join={digitalJoin3}>Digital 2</Button>
     <Button color="primary" join={digitalJoin3}>Digital 3</Button>
 
-    <Button color="primary" click={() => {analogJoin2.publish(65535)}}>Analog 1</Button>
-    <Button color="primary" click={() => {analogJoin2.publish(32650)}}>Analog 2</Button>
-    <Button color="primary" click={() => {analogJoin2.publish(0)}}>Analog 3</Button>
+    <Button color="primary" type="analog" join={analogJoin2} value={65535}>Analog 1</Button>
+    <Button color="primary" type="analog" join={analogJoin2} value={32650}>Analog 2</Button>
+    <Button color="primary" type="analog" join={analogJoin2} value={0}>Analog 3</Button>
 
-    <Button color="primary" click={() => {serialJoin1.publish('Button 1 Text')}}>Serial 1</Button>
-    <Button color="primary" click={() => {serialJoin1.publish('Button 2 Text')}}>Serial 2</Button>
-    <Button color="primary" click={() => {serialJoin1.publish('Button 3 Text')}}>Serial 3</Button>
+    <Button color="primary" type="serial" join={serialJoin1} value="Button 1 Text">Serial 1</Button>
+    <Button color="primary" type="serial" join={serialJoin1} value="Button 2 Text">Serial 2</Button>
+    <Button color="primary" type="serial" join={serialJoin1} value="Button 3 Text">Serial 3</Button>
     
   </div>
 </div>

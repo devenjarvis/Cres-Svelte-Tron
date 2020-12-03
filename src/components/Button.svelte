@@ -1,9 +1,15 @@
 <script>    
-    // Below we set default values in the case none are provided
+    // Inputs to the Button component, we set default values in the case none are provided
     export let color = 'primary';
     export let type = 'momentary';
     export let join = null;
+    export let value = true;
     export let click = () => {};
+
+    // Boolean variable that defines if this is a button sending a digital signal or not
+    let digitalButton = join && !['analog', 'serial'].includes(type);
+    // A client-side variable for tracking if the button is pressed or not
+    let pressed;
     
     // Function to handle the push of a button
     function buttonPushed(){
@@ -17,7 +23,12 @@
                 join.publish(true);
             } else if(type == 'lock-low') {
                 join.publish(false);
+            } else if(type == 'analog' || type == 'serial') {
+                join.publish(value);
+                pressed = true;
             }
+        } else {
+            pressed = true;
         }
     }
 
@@ -27,7 +38,11 @@
         if (join) {
             if(type == 'momentary') {
                 join.publish(false);
+            } else if(type == 'analog' || type == 'serial') {
+                pressed = false;
             }
+        } else {
+            pressed = false;
         }
     }
 
@@ -86,7 +101,7 @@
 
 <button 
     class="{color}"
-    class:pressed="{$join}"
+    class:pressed="{digitalButton ? $join : pressed}"
     on:click={click}
 
     on:touchstart|preventDefault={buttonPushed}
