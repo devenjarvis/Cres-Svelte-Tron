@@ -2,7 +2,7 @@
   // Added by Deven to help get buttons working
   import { digitalJoin4, digitalJoin5, digitalJoin6 } from '../stores/joinStore.js';
 
-  import { push } from 'svelte-spa-router';
+  import Router, { push } from 'svelte-spa-router';
   import Button from "./Button.svelte";
 
 </script>

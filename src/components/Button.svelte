@@ -13,6 +13,7 @@
     
     // Function to handle the push of a button
     function buttonPushed(){
+        click;
         // The following block only works if you've defined a join
         if (join) {
             if(type == 'momentary') {
